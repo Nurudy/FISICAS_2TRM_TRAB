@@ -9,6 +9,7 @@ public class BUCLE : MonoBehaviour
     public string[] names;
     public Vector3[] positions;
     public GameObject prefab;
+    
     void Start()
     {
         /* for(int i = 0; i <= 10; i++)
@@ -26,7 +27,7 @@ public class BUCLE : MonoBehaviour
          for(int i = 0; i < names.Length; i++)
          {
              Debug.Log(names[i]);
-         }*/
+         }
 
         //version for each
 
@@ -39,6 +40,16 @@ public class BUCLE : MonoBehaviour
         {
             Instantiate(prefab, positions[i], Quaternion.identity);
         }*/
+
+        //multiplicacion while
+
+        int i = 1;
+        while (i <= 10)
+        {
+            Debug.Log(message: $"{value} x {i} = {value * i}");
+            i++; //se pone esto para no activar el infinito y que unity pete
+        }
+
     }
 
 
