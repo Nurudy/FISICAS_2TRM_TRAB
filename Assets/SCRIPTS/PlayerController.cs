@@ -35,18 +35,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-        private float powerupForce = 15f;
+    public float PowerupCountdown;
+        public float powerupForce = 15f;
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Enemy") && hasPowerup)
+        if (other.gameObject.CompareTag("Enemy"))
         {
+            StartCoroutine(PowerupCountDown());
+
             Rigidbody enemyRigidbody = other.gameObject.
             GetComponent<Rigidbody>();
             Vector3 awayFromPlayer =
             (other.gameObject.transform.position - transform.position).normalized;
             enemyRigidbody.AddForce(awayFromPlayer * powerupForce, ForceMode.Impulse);
         }
+    }
+
+    private IEnumerator PowerupCountDown()
+    {
+        yield return new WaitForSeconds(6);
+        hasPowerup = false;
     }
 }
 
